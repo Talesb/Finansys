@@ -8,7 +8,7 @@
 <div class="row mb-4">
   <div class="col-md">
     <h1 class="h2  pl-2">
-        {{pageTitle}}
+      {{pageTitle}}
     </h1>
   </div>
   <div class="col-md">
@@ -39,6 +39,14 @@
       </div>
     </div>
   </div>
+
+  <div class="alert alert-danger mt-4" *ngIf="serverErrorMessages">
+    <strong>Erro no servidor!</strong>
+    <ul *ngFor='let error of serverErrorMessages'>
+      <li>{{error}}</li>
+    </ul>
+  </div>
+
   <button [disabled]="submittingForm || categoryForm.invalid" type="submit"
     class="btn btn-primary btn-lg float-right mt-3">Salvar</button>
 </form>
