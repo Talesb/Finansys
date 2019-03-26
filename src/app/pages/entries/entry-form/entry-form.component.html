@@ -23,15 +23,54 @@
       Informações sobre o Lançamento
     </div>
     <div class="card-body">
+
       <div class="form-row">
-        <div class="form-group col-md-4">
-          <label for="name">Nome</label>
+        <!-- Tipo -->
+        <div class="form-group col-md-2">
+          <label for="type">Tipo</label>
+          <select id="type" formControlName="type" formControlName="type" class="form-control" name="type">
+            <option value="expense">Despesa</option>
+            <option value="expense">Receita</option>
+          </select>
+          <div class="text-danger" *ngIf="entryForm.get('type').invalid && entryForm.get('type').touched">
+            <div *ngIf="entryForm.get('type').errors.required">Dados Obrigatórios</div>
+          </div>
+        </div>
+
+        <!-- nome -->
+        <div class="form-group col-md-5">
+          <label for="name">Lançamento</label>
           <input type="text" class="form-control" id="name" formControlName="name">
           <div class="text-danger" *ngIf="entryForm.get('name').invalid && entryForm.get('name').touched">
             <div *ngIf="entryForm.get('name').errors.required">Dados Obrigatórios</div>
             <div *ngIf="entryForm.get('name').errors.required">Deve ter no mínimo 2 caracteres</div>
           </div>
         </div>
+
+
+        <!-- valor -->
+        <div class="form-group col-md-3">
+          <label for="amount">Valor</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">R$</div>
+            </div>
+            <input [imask]="imaskConfig" type="text" class="form-control text-left" id="amount"
+              formControlName="amount">
+          </div>
+          <div class="text-danger" *ngIf="entryForm.get('amount').invalid && entryForm.get('amount').touched">
+            <div *ngIf="entryForm.get('amount').errors.required">Dados Obrigatórios</div>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="form-row">
+
+
+
+        <!-- descrição -->
         <div class="form-group col-md-8">
           <label for="description">Descrição</label>
           <input type="text" class="form-control" id="description" formControlName="description">
