@@ -57,7 +57,10 @@ export class EntryService {
 
   private jsonDataToEntries(jsonData: any[]): Entry[] {
     const entries: Entry[] = [];
-    jsonData.forEach(element => entries.push(element as Entry));
+    jsonData.forEach(element => {
+      const entry = Object.assign(new Entry(), element);
+      entries.push(entry);
+    }); 
     return entries;
   }
 
@@ -67,7 +70,7 @@ export class EntryService {
   }
 
   private jsonDataToEntry(jsonData: any) {
-    return jsonData as Entry;
+    return Object.assign(new Entry(), jsonData);
   }
 
 }
