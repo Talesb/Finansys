@@ -28,9 +28,8 @@
         <!-- Tipo -->
         <div class="form-group col-md-2">
           <label for="type">Tipo</label>
-          <select id="type" formControlName="type" formControlName="type" class="form-control" name="type">
-            <option value="expense">Despesa</option>
-            <option value="expense">Receita</option>
+          <select id="type" formControlName="type" class="form-control" name="type">
+            <option *ngFor="let option of typeOptions" [value]="option.value">{{option.text}}</option>
           </select>
           <div class="text-danger" *ngIf="entryForm.get('type').invalid && entryForm.get('type').touched">
             <div *ngIf="entryForm.get('type').errors.required">Dado Obrigatório</div>
@@ -81,10 +80,12 @@
         <div class="form-group col-md-2">
           <label for="paid">Pago</label>
           <div class="btn-group">
-            <label (click)="entryForm.get('paid').setValue(true)" [class.active]="entryForm.get('paid').value == true" class="btn btn-outline-info">
+            <label (click)="entryForm.get('paid').setValue(true)" [class.active]="entryForm.get('paid').value == true"
+              class="btn btn-outline-info">
               Pago
             </label>
-            <label (click)="entryForm.get('paid').setValue(false)" [class.active]="entryForm.get('paid').value == false" class="btn btn-outline-info">
+            <label (click)="entryForm.get('paid').setValue(false)" [class.active]="entryForm.get('paid').value == false"
+              class="btn btn-outline-info">
               Pendente
             </label>
           </div>
@@ -93,8 +94,22 @@
           </div>
         </div>
 
+
+        <!-- Categoria Id -->
+        <div class="form-group col-md-3">
+          <label for="categoryId">Categoria</label>
+          <select id="categoryId" formControlName="categoryId" class="form-control" name="categoryId">
+            <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+          </select>
+          <div class="text-danger" *ngIf="entryForm.get('categoryId').invalid && entryForm.get('categoryId').touched">
+            <div *ngIf="entryForm.get('categoryId').errors.required">Dado Obrigatório</div>
+          </div>
+        </div>
+
+
+
         <!-- descrição -->
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-7">
           <label for="description">Descrição</label>
           <input type="text" class="form-control" id="description" formControlName="description">
         </div>
