@@ -60,15 +60,14 @@ export abstract class BaseResourceService<T extends BaseResourceModel> {
         return resources;
     }
 
-    protected handleError(error: any): Observable<any> {
-        console.log('Erro na requisição: ' + error);
-        return throwError(error);
-    }
-
     protected jsonDataToResource(jsonData: any) {
         return jsonData as T;
     }
 
+    protected handleError(error: any): Observable<any> {
+        console.log('Erro na requisição: ' + error);
+        return throwError(error);
+    }
 
 
 
