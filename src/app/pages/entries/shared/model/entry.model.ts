@@ -1,4 +1,4 @@
-import { Category } from 'src/app/pages/categories/shared/model/category';
+import { Category } from 'src/app/pages/categories/shared/model/category.model';
 import { BaseResourceModel } from 'src/app/shared/model/base-resource.model';
 
 export class Entry extends BaseResourceModel {
@@ -23,5 +23,9 @@ export class Entry extends BaseResourceModel {
 
     get paidText(): string {
         return this.paid ? 'Pago' : 'Pendente';
+    }
+
+    static fromJson(jsonData: any): Entry {
+        return Object.assign(new Entry(), jsonData);
     }
 }

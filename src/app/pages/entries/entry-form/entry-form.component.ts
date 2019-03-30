@@ -6,7 +6,7 @@ import { EntryService } from '../shared/services/entry.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { switchMap } from 'rxjs/operators';
-import { Category } from '../../categories/shared/model/category';
+import { Category } from '../../categories/shared/model/category.model';
 import { CategoryService } from '../../categories/shared/services/category.service';
 
 @Component({
@@ -126,7 +126,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private createEntry() {
-    const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
+    const entry: Entry = Entry.fromJson(this.entryForm.value);
     this.entryService.create(entry)
       .subscribe(
         entry => this.actionsForSuccess(entry),
@@ -135,7 +135,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private updateEntry() {
-    const entry: Entry = Object.assign(new Entry(), this.entryForm.value);
+    const entry: Entry = Entry.fromJson(this.entryForm.value);
     this.entryService.update(entry)
       .subscribe(
         entry => this.actionsForSuccess(entry),

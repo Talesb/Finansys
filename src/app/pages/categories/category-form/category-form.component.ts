@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import toastr from 'toastr';
-import { Category } from '../shared/model/category';
+import { Category } from '../shared/model/category.model';
 import { CategoryService } from '../shared/services/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
