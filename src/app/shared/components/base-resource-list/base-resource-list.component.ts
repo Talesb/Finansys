@@ -14,7 +14,7 @@ export abstract class BaseResourceListComponent<T extends BaseResourceModel> imp
     ngOnInit() {
         this.resourceService.getAll()
             .subscribe(resources => this.resources =
-                resources.sort((a, b) => b.id - a.id), error => alert('Erro ao carregar a lista: ' + error));
+                resources.sort((a, b) => b.id - a.id), error => alert('Erro ao carregar a lista: ' + error.statusText));
     }
 
     deleteResource(resource: T) {
